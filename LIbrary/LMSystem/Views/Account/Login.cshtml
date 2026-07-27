@@ -1,0 +1,56 @@
+@model LMSystem.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="col-md-5 col-lg-4">
+        <div class="card-premium border-0 p-4 p-md-5 text-center">
+            
+            <div class="mb-4">
+                <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px; background-color: var(--bg-color);">
+                    <i class="bi bi-person-circle" style="font-size: 2rem; color: var(--text-primary);"></i>
+                </div>
+                <h3 class="fw-bold mb-1" style="color: var(--text-primary);">Welcome Back</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Sign in to access the library system</p>
+            </div>
+
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger" style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444; border: none; border-radius: 8px;">
+                    <i class="bi bi-exclamation-circle me-2"></i> @ViewBag.ErrorMessage
+                </div>
+            }
+
+            <form asp-action="Login" class="text-start">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                
+                <div class="mb-3">
+                    <label asp-for="Username" class="form-label fw-medium" style="color: var(--text-primary); font-size: 0.9rem;"></label>
+                    <input asp-for="Username" class="form-control form-control-premium" placeholder="Enter your username" />
+                    <span asp-validation-for="Username" class="text-danger" style="font-size: 0.8rem;"></span>
+                </div>
+                
+                <div class="mb-4">
+                    <label asp-for="Password" class="form-label fw-medium" style="color: var(--text-primary); font-size: 0.9rem;"></label>
+                    <input asp-for="Password" class="form-control form-control-premium" type="password" placeholder="Enter your password" />
+                    <span asp-validation-for="Password" class="text-danger" style="font-size: 0.8rem;"></span>
+                </div>
+                
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-premium btn-lg">Sign In</button>
+                </div>
+                
+                <div class="text-center">
+                    <a href="/" style="color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;"><i class="bi bi-arrow-left me-1"></i> Return to Home</a>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

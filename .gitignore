@@ -1,0 +1,10 @@
+﻿[Bb]in/
+[Oo]bj/
+.vs/
+.vscode/
+*.user
+*.suo
+.DS_Store
+__MACOSX/
+*.mdf
+*.ldf

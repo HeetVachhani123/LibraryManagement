@@ -1,0 +1,102 @@
+@model LMSystem.Models.BookListViewModel
+@{
+    ViewData["Title"] = "Books List";
+}
+
+<!-- Header & Actions -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold mb-0" style="letter-spacing: -0.02em;">Books Inventory</h2>
+    
+    <div class="d-flex gap-3">
+        <form asp-action="Index" method="get" class="d-flex gap-2">
+            <div class="input-group">
+                <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color); color: var(--text-secondary);">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" name="searchQuery" value="@Model.SearchQuery" class="form-control form-control-premium border-start-0 ps-0" placeholder="Search books..." style="box-shadow: none;" />
+            </div>
+            <button type="submit" class="btn btn-premium d-none d-md-block">Search</button>
+            @if (!string.IsNullOrWhiteSpace(Model.SearchQuery))
+            {
+                <a asp-action="Index" class="btn btn-outline-premium">Clear</a>
+            }
+        </form>
+        <a asp-action="Create" class="btn btn-premium d-flex align-items-center gap-2">
+            <i class="bi bi-plus-lg"></i> <span class="d-none d-md-inline">Add New</span>
+        </a>
+    </div>
+</div>
+
+<!-- Render Table (Using Model.Books) -->
+<div class="table-responsive rounded-4 border" style="border-color: var(--border-color) !important; overflow: hidden;">
+    <table class="table-premium mb-0">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Published</th>
+                <th>Status</th>
+                <th class="text-end">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model.Books)
+            {
+                <tr id="bookRow-@book.ID">
+                    <td class="fw-medium">@book.Title</td>
+                    <td style="color: var(--text-secondary);">@book.Author</td>
+                    <td style="color: var(--text-secondary); font-variant-numeric: tabular-nums;">@book.ISBN</td>
+                    <td style="color: var(--text-secondary);">@book.PublishedDate.ToString("MMM yyyy")</td>
+                    <td>
+                        @if (book.IsAvailable)
+                        {
+                            <span class="badge rounded-pill" style="background-color: rgba(16, 185, 129, 0.1); color: #10b981; font-weight: 500; padding: 0.4em 0.8em;">Available</span>
+                        }
+                        else
+                        {
+                            <span class="badge rounded-pill" style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444; font-weight: 500; padding: 0.4em 0.8em;">Borrowed</span>
+                        }
+                    </td>
+                    <td class="text-end">
+                        <div class="btn-group" role="group">
+                            <a asp-action="Details" asp-route-id="@book.ID" class="btn btn-sm btn-outline-premium border-0" title="Details"><i class="bi bi-eye"></i></a>
+                            <a asp-action="Edit" asp-route-id="@book.ID" class="btn btn-sm btn-outline-premium border-0" title="Edit"><i class="bi bi-pencil"></i></a>
+                            <a asp-action="Delete" asp-route-id="@book.ID" class="btn btn-sm btn-outline-premium border-0 text-danger" title="Delete"><i class="bi bi-trash3"></i></a>
+                            
+                            @if (book.IsAvailable)
+                            {
+                                <a asp-controller="Borrow" asp-action="Create" asp-route-bookId="@book.ID" class="btn btn-sm btn-outline-premium ms-2 rounded-pill" style="border: 1px solid var(--border-color);">Borrow</a>
+                            }
+                            else
+                            {
+                                var activeBorrowRecord = book.BorrowRecords?.FirstOrDefault(br => br.ReturnDate == null);
+                                if (activeBorrowRecord != null)
+                                {
+                                    <a asp-controller="Borrow" asp-action="Return" asp-route-borrowRecordId="@activeBorrowRecord.ID" class="btn btn-sm btn-outline-premium ms-2 rounded-pill" style="border: 1px solid var(--border-color); color: #10b981;">Return</a>
+                                }
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination Controls -->
+@if (Model.TotalPages > 1)
+{
+    <nav class="mt-4 d-flex justify-content-center">
+        <ul class="pagination pagination-sm mb-0 gap-2">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item">
+                    <a class="page-link rounded-circle d-flex align-items-center justify-content-center border-0 @(Model.CurrentPage == i ? "text-white" : "")" 
+                       style="width: 36px; height: 36px; @(Model.CurrentPage == i ? "background-color: var(--accent-color);" : "background-color: var(--surface-color); color: var(--text-primary);")"
+                       asp-action="Index" asp-route-page="@i" asp-route-searchQuery="@Model.SearchQuery">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

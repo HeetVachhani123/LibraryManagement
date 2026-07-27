@@ -1,0 +1,28 @@
+@model LMSystem.Models.Publication
+
+@{
+    string type = ViewBag.PublicationType;
+    ViewData["Title"] = $"{type} Details";
+}
+
+<div class="card shadow">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0">@type Details</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">ID</dt>
+            <dd class="col-sm-9">@Model.ID</dd>
+            <dt class="col-sm-3">Title</dt>
+            <dd class="col-sm-9">@Model.Title</dd>
+            <dt class="col-sm-3">Publisher</dt>
+            <dd class="col-sm-9">@Model.Publisher</dd>
+            <dt class="col-sm-3">Publish Date</dt>
+            <dd class="col-sm-9">@Model.PublishDate.ToShortDateString()</dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-type="@type" asp-route-id="@Model.ID" class="btn btn-warning">Edit</a>
+        <a asp-action="Index" asp-route-type="@type" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

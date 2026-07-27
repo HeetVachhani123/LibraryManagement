@@ -1,0 +1,30 @@
+@model LMSystem.Models.BorrowRecord
+
+@{
+    ViewData["Title"] = "Return Book";
+}
+
+<div class="card shadow">
+    <div class="card-header bg-success text-white">
+        <h4 class="mb-0">Return Confirmation: @ViewBag.BookTitle</h4>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Confirm Return</h5>
+        <p class="card-text">Please confirm that the book has been returned in good condition.</p>
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Borrower Name</dt>
+            <dd class="col-sm-9">@Model.BorrowerName</dd>
+            <dt class="col-sm-3">Borrower Email</dt>
+            <dd class="col-sm-9">@Model.BorrowerEmail</dd>
+            <dt class="col-sm-3">Borrow Date</dt>
+            <dd class="col-sm-9">@Model.BorrowDate.ToString("g")</dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <form asp-action="Return">
+            <input type="hidden" asp-for="ID" />
+            <input type="submit" value="Confirm Return" class="btn btn-success" />
+            <a asp-controller="Books" asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

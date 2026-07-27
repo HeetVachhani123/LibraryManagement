@@ -1,0 +1,14 @@
+@model LMSystem.Models.Book
+
+@{
+    ViewData["Title"] = "Not Available";
+}
+
+<div class="alert alert-danger mt-5">
+    <h4 class="alert-heading">Book Not Available</h4>
+    <p>Sorry, the book <strong>@Model.Title</strong> is currently borrowed by someone else and is not available for borrowing.</p>
+    <hr>
+    <p class="mb-0">
+        <a asp-controller="Books" asp-action="Index" class="btn btn-outline-danger">Back to Books</a>
+    </p>
+</div>

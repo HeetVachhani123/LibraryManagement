@@ -1,0 +1,113 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero Section -->
+<div class="row align-items-center py-5 mb-5 border-bottom" style="border-color: var(--border-color) !important;">
+    <div class="col-lg-8 col-md-10 mx-auto text-center">
+        <h1 class="display-4 fw-bold mb-3" style="color: var(--text-primary); letter-spacing: -0.04em;">
+            Discover Your Next<br>Great Read
+        </h1>
+        <p class="lead mb-4" style="color: var(--text-secondary);">
+            Explore our curated collection of timeless classics and modern masterpieces.
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="/Books" class="btn btn-premium btn-lg px-4 rounded-pill">Browse Collection</a>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a href="/Account/Login" class="btn btn-outline-premium btn-lg px-4 rounded-pill">Staff Login</a>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Featured Books Section -->
+<div class="row mb-5">
+    <div class="col-12 d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h3 class="fw-bold mb-0">Featured Selections</h3>
+            <span style="color: var(--text-secondary); font-size: 0.9rem;">Handpicked for this week</span>
+        </div>
+        <a href="/Books" style="color: var(--text-secondary); text-decoration: none; font-weight: 500;">View All <i class="bi bi-arrow-right"></i></a>
+    </div>
+
+    <!-- Book 1 -->
+    <div class="col-md-4 mb-4">
+        <div class="card-premium h-100 d-flex flex-column">
+            <div style="height: 350px; overflow: hidden; background: #000;">
+                <img src="/images/mockingbird_cover.png" class="w-100 h-100" style="object-fit: cover; opacity: 0.9; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="To Kill a Mockingbird">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="fw-bold mb-0" style="color: var(--text-primary);">The Hobbit</h5>
+                </div>
+                <p class="mb-4" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; flex-grow: 1;">
+                    A hobbit named Bilbo embarks on an unexpected journey with dwarves to reclaim their homeland from a dragon.
+                </p>
+                <a href="/Books/Details/1" class="btn btn-outline-premium w-100 rounded-pill">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book 2 -->
+    <div class="col-md-4 mb-4">
+        <div class="card-premium h-100 d-flex flex-column">
+            <div style="height: 350px; overflow: hidden; background: #000;">
+                <img src="/images/1984_cover.png" class="w-100 h-100" style="object-fit: cover; opacity: 0.9; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="1984">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="fw-bold mb-0" style="color: var(--text-primary);">War and Peace</h5>
+                </div>
+                <p class="mb-4" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; flex-grow: 1;">
+                    In 'War and Peace,' Leo Tolstoy explores the impact of the Napoleonic Wars on Russian aristocratic families, interweaving personal dramas with historical events...
+                </p>
+                <a href="/Books/Details/2" class="btn btn-outline-premium w-100 rounded-pill">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book 3 -->
+    <div class="col-md-4 mb-4">
+        <div class="card-premium h-100 d-flex flex-column">
+            <div style="height: 350px; overflow: hidden; background: #000;">
+                <img src="/images/gatsby_cover.png" class="w-100 h-100" style="object-fit: cover; opacity: 0.9; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="The Great Gatsby">
+            </div>
+            <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="fw-bold mb-0" style="color: var(--text-primary);">Purple Hearts</h5>
+                </div>
+                <p class="mb-4" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; flex-grow: 1;">
+                    Purple Hearts follows a sergeant and a soldier who are thrown together in the midst of war. Despite their contrasting backgrounds and the challenges they face...
+                </p>
+                <a href="/Books/Details/3" class="btn btn-outline-premium w-100 rounded-pill">View Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Announcements Section -->
+<div class="row mb-5 pb-5">
+    <div class="col-md-6 mb-4">
+        <div class="p-4 rounded-4" style="background-color: var(--surface-color); border: 1px solid var(--border-color);">
+            <div class="d-flex align-items-center mb-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px; background-color: var(--bg-color);">
+                    <i class="bi bi-bookmark-star" style="color: var(--text-primary); font-size: 1.25rem;"></i>
+                </div>
+                <h5 class="fw-bold mb-0">New Arrivals</h5>
+            </div>
+            <p style="color: var(--text-secondary);" class="mb-0">Check out the latest books added to our collection this week. We have exciting new historical fiction.</p>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="p-4 rounded-4" style="background-color: var(--surface-color); border: 1px solid var(--border-color);">
+            <div class="d-flex align-items-center mb-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px; background-color: var(--bg-color);">
+                    <i class="bi bi-clock-history" style="color: var(--text-primary); font-size: 1.25rem;"></i>
+                </div>
+                <h5 class="fw-bold mb-0">Hours Update</h5>
+            </div>
+            <p style="color: var(--text-secondary);" class="mb-0">The library will be operating on holiday hours (10 AM - 4 PM) this upcoming weekend.</p>
+        </div>
+    </div>
+</div>

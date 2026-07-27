@@ -1,0 +1,14 @@
+@model LMSystem.Models.Book
+
+@{
+    ViewData["Title"] = "Already Returned";
+}
+
+<div class="alert alert-info mt-5">
+    <h4 class="alert-heading">Book Already Returned</h4>
+    <p>The book <strong>@Model.Title</strong> is already available in the library.</p>
+    <hr>
+    <p class="mb-0">
+        <a asp-controller="Books" asp-action="Index" class="btn btn-outline-info">Back to Books</a>
+    </p>
+</div>

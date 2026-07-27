@@ -1,0 +1,50 @@
+@model LMSystem.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2 class="mb-4">Dashboard</h2>
+
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4 mb-5">
+    <div class="col">
+        <div class="card bg-primary text-white h-100 shadow">
+            <div class="card-body">
+                <h6 class="card-title text-uppercase text-white-50">Total Students</h6>
+                <h2 class="display-5 mb-0">@Model.TotalStudents</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-success text-white h-100 shadow">
+            <div class="card-body">
+                <h6 class="card-title text-uppercase text-white-50">Total Books</h6>
+                <h2 class="display-5 mb-0">@Model.TotalBooks</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-info text-white h-100 shadow">
+            <div class="card-body">
+                <h6 class="card-title text-uppercase text-white-50">Total Librarians</h6>
+                <h2 class="display-5 mb-0">@Model.TotalLibrarians</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-warning text-dark h-100 shadow">
+            <div class="card-body">
+                <h6 class="card-title text-uppercase text-dark-50">Total Borrowings</h6>
+                <h2 class="display-5 mb-0">@Model.TotalBorrowings</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card bg-danger text-white h-100 shadow">
+            <div class="card-body">
+                <h6 class="card-title text-uppercase text-white-50">Total Publications</h6>
+                <h2 class="display-5 mb-0">@Model.TotalPublications</h2>
+            </div>
+        </div>
+    </div>
+</div>
