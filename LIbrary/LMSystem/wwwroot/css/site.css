@@ -168,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero Banner Image */
 .hero-banner {
-  background: linear-gradient(rgba(252,252,253,0.8), rgba(252,252,253,0.95)), url('/images/hero_bg.png') center/cover no-repeat;
+  background: linear-gradient(rgba(17,24,39,0.65), rgba(17,24,39,0.8)), url('/images/hero_bg.png') center/cover no-repeat;
   border-radius: 16px;
   margin-top: 1rem;
   padding: 5rem 2rem;
@@ -177,6 +177,37 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.3s ease;
 }
 
+.hero-banner h1 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.4);
+}
+
+.hero-banner p {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+.hero-banner .btn-premium {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.hero-banner .btn-premium:hover {
+  background-color: #f3f4f6 !important;
+  transform: translateY(-2px);
+}
+
+.hero-banner .btn-outline-premium {
+  border-color: rgba(255,255,255,0.8) !important;
+  color: #ffffff !important;
+}
+
+.hero-banner .btn-outline-premium:hover {
+  background-color: rgba(255,255,255,0.15) !important;
+  border-color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
 [data-theme="dark"] .hero-banner {
-  background: linear-gradient(rgba(15,15,17,0.85), rgba(15,15,17,0.95)), url('/images/hero_bg.png') center/cover no-repeat;
+  background: linear-gradient(rgba(15,15,17,0.7), rgba(15,15,17,0.9)), url('/images/hero_bg.png') center/cover no-repeat;
 }
