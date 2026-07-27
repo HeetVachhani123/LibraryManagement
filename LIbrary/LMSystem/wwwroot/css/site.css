@@ -11,6 +11,9 @@
   --accent-hover: #374151;
   --accent-text: #ffffff;
   
+  --table-header-bg: #f3f4f6;
+  --table-stripe-bg: #f9fafb;
+  
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -27,6 +30,9 @@
   --accent-hover: #e4e4e7;
   --accent-text: #000000;
   
+  --table-header-bg: #27272a;
+  --table-stripe-bg: #1f1f22;
+  
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
@@ -35,6 +41,8 @@
 html, body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
+  background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+  background-size: 24px 24px;
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
   min-height: 100vh;
@@ -115,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .table-premium th {
-  background-color: var(--bg-color);
+  background-color: var(--table-header-bg);
   color: var(--text-secondary);
   font-weight: 500;
   text-transform: uppercase;
@@ -131,6 +139,10 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid var(--border-color);
   background-color: var(--surface-color);
   transition: background-color 0.2s ease;
+}
+
+.table-premium tbody tr:nth-child(even) td {
+  background-color: var(--table-stripe-bg);
 }
 
 .table-premium tbody tr:hover td {
@@ -152,4 +164,19 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 0 2px rgba(var(--surface-color-rgb), 0.2);
   background-color: var(--surface-color);
   outline: none;
+}
+
+/* Hero Banner Image */
+.hero-banner {
+  background: linear-gradient(rgba(252,252,253,0.8), rgba(252,252,253,0.95)), url('/images/hero_bg.png') center/cover no-repeat;
+  border-radius: 16px;
+  margin-top: 1rem;
+  padding: 5rem 2rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .hero-banner {
+  background: linear-gradient(rgba(15,15,17,0.85), rgba(15,15,17,0.95)), url('/images/hero_bg.png') center/cover no-repeat;
 }
