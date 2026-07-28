@@ -8,18 +8,18 @@
 
 <!-- Top Action Bar Matching Your UI Blueprint -->
 <div class="d-flex justify-content-between align-items-center my-3">
-    <a asp-action="Create" asp-route-type="@currentType" class="btn btn-primary">Add New @currentType</a>
+    <a asp-action="Create" asp-route-type="@currentType" class="btn btn-premium">Add New @currentType</a>
     
     <form asp-action="Index" method="get" asp-route-type="@currentType" class="form-inline d-flex gap-2">
-        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Search..." />
-        <button type="submit" class="btn btn-outline-secondary">Search</button>
+        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control form-control-premium search-pill" placeholder="Search..." />
+        <button type="submit" class="btn btn-premium">Search</button>
     </form>
 </div>
 
 <!-- Main Table Layout -->
 <div class="table-responsive rounded-4 border" style="border-color: var(--border-color) !important; overflow: hidden;">
 <table class="table-premium mb-0">
-    <thead class="table-dark">
+    <thead>
         <tr>
             <th>Title</th>
             <th>Publisher</th>
@@ -36,15 +36,13 @@
                 <td>@item.Publisher</td>
                 <td>@item.PublishDate.ToString("yyyy-MM-dd")</td>
                 <td>
-                    <span class="badge @(item.IsAvailable ? "bg-success" : "bg-danger")">
+                    <span class="badge-status @(item.IsAvailable ? "badge-available" : "badge-unavailable")">
                         @(item.IsAvailable ? "Available" : "Checked Out")
                     </span>
                 </td>
-                <td>
-                    <div class="btn-group btn-group-sm" role="group">
-                        <a asp-action="Edit" asp-route-id="@item.ID" asp-route-type="@currentType" class="btn btn-warning text-white">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@item.ID" asp-route-type="@currentType" class="btn btn-danger">Delete</a>
-                    </div>
+                <td class="text-end">
+                    <a asp-action="Edit" asp-route-id="@item.ID" asp-route-type="@currentType" class="btn btn-sm btn-outline-premium border-0" title="Edit"><i class="bi bi-pencil"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.ID" asp-route-type="@currentType" class="btn btn-sm btn-outline-premium border-0 text-danger" title="Delete"><i class="bi bi-trash3"></i></a>
                 </td>
             </tr>
         }

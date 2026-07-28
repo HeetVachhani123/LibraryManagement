@@ -5,16 +5,16 @@
 
 <div class="row mt-3 px-2 align-items-center">
     <div class="col-md-6">
-        <a class="btn btn-primary" href="/Students/Create">Add New Student</a>
+        <a class="btn btn-premium" href="/Students/Create">Add New Student</a>
     </div>
     <!-- Search Interface Block -->
     <div class="col-md-6">
-        <form method="get" action="/Students/Index" class="d-flex float-end">
-            <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control me-2" placeholder="Search by name, email, phone..." style="width: 250px;" />
-            <button type="submit" class="btn btn-outline-success me-1">Search</button>
+        <form method="get" action="/Students/Index" class="d-flex float-end gap-2">
+            <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control form-control-premium search-pill" placeholder="Search by name, email, phone..." style="width: 250px;" />
+            <button type="submit" class="btn btn-premium">Search</button>
             @if (!string.IsNullOrEmpty(Model.SearchTerm))
             {
-                <a href="/Students/Index" class="btn btn-outline-secondary">Clear</a>
+                <a href="/Students/Index" class="btn btn-outline-premium">Clear</a>
             }
         </form>
     </div>
@@ -41,9 +41,9 @@
                     <td>@item.Name</td>
                     <td>@item.Email</td>
                     <td>@item.Phone</td>
-                    <td>
-                        <a class="btn btn-warning btn-sm" href="/Students/Edit/@item.StudentID">Edit</a>
-                        <a class="btn btn-danger btn-sm" href="/Students/Delete/@item.StudentID" onclick="return confirm('Are you sure?')">Delete</a>
+                    <td class="text-end">
+                        <a class="btn btn-sm btn-outline-premium border-0" href="/Students/Edit/@item.StudentID" title="Edit"><i class="bi bi-pencil"></i></a>
+                        <a class="btn btn-sm btn-outline-premium border-0 text-danger" href="/Students/Delete/@item.StudentID" onclick="return confirm('Are you sure?')" title="Delete"><i class="bi bi-trash3"></i></a>
                     </td>
                 </tr>
             }

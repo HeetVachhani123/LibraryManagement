@@ -9,11 +9,11 @@
     
     <div class="d-flex gap-3">
         <form asp-action="Index" method="get" class="d-flex gap-2">
-            <div class="input-group">
-                <span class="input-group-text bg-transparent border-end-0" style="border-color: var(--border-color); color: var(--text-secondary);">
+            <div class="input-group search-pill-container" style="border-radius: 9999px; overflow: hidden; border: 1px solid var(--border-color); background-color: var(--bg-color);">
+                <span class="input-group-text bg-transparent border-0" style="color: var(--text-secondary);">
                     <i class="bi bi-search"></i>
                 </span>
-                <input type="text" name="searchQuery" value="@Model.SearchQuery" class="form-control form-control-premium border-start-0 ps-0" placeholder="Search books..." style="box-shadow: none;" />
+                <input type="text" name="searchQuery" value="@Model.SearchQuery" class="form-control form-control-premium border-0 bg-transparent ps-0" placeholder="Search books..." style="box-shadow: none;" />
             </div>
             <button type="submit" class="btn btn-premium d-none d-md-block">Search</button>
             @if (!string.IsNullOrWhiteSpace(Model.SearchQuery))
@@ -51,11 +51,11 @@
                     <td>
                         @if (book.IsAvailable)
                         {
-                            <span class="badge rounded-pill" style="background-color: rgba(16, 185, 129, 0.1); color: #10b981; font-weight: 500; padding: 0.4em 0.8em;">Available</span>
+                            <span class="badge-status badge-available">Available</span>
                         }
                         else
                         {
-                            <span class="badge rounded-pill" style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444; font-weight: 500; padding: 0.4em 0.8em;">Borrowed</span>
+                            <span class="badge-status badge-unavailable">Borrowed</span>
                         }
                     </td>
                     <td class="text-end">

@@ -4,15 +4,15 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mt-3 px-2">
-    <a class="btn btn-primary" href="/Librarians/Create">Add New Librarian</a>
+    <a class="btn btn-premium" href="/Librarians/Create">Add New Librarian</a>
     
     <!-- Inline Search Form -->
     <form method="get" action="/Librarians/Index" class="d-flex gap-2">
-        <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Search by name..." style="width: 250px;" />
-        <button type="submit" class="btn btn-secondary">Search</button>
+        <input type="text" name="searchTerm" value="@Model.SearchTerm" class="form-control form-control-premium search-pill" placeholder="Search by name..." style="width: 250px;" />
+        <button type="submit" class="btn btn-premium">Search</button>
         @if (!string.IsNullOrEmpty(Model.SearchTerm))
         {
-            <a href="/Librarians/Index" class="btn btn-outline-danger">Clear</a>
+            <a href="/Librarians/Index" class="btn btn-outline-premium">Clear</a>
         }
     </form>
 </div>
@@ -38,9 +38,9 @@
                     <td>@item.Name</td>
                     <td>@item.Age</td>
                     <td>@item.Phone</td>
-                    <td>
-                        <a class="btn btn-warning btn-sm" href="/Librarians/Edit/@item.LibrarianID">Edit</a>
-                        <a class="btn btn-danger btn-sm" href="/Librarians/Delete/@item.LibrarianID" onclick="return confirm('Are you sure?')">Delete</a>
+                    <td class="text-end">
+                        <a class="btn btn-sm btn-outline-premium border-0" href="/Librarians/Edit/@item.LibrarianID" title="Edit"><i class="bi bi-pencil"></i></a>
+                        <a class="btn btn-sm btn-outline-premium border-0 text-danger" href="/Librarians/Delete/@item.LibrarianID" onclick="return confirm('Are you sure?')" title="Delete"><i class="bi bi-trash3"></i></a>
                     </td>
                 </tr>
             }
